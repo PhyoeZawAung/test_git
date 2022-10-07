@@ -5,6 +5,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>This is the develop branch</Text>
+      <Text>Merging</Text>
       <StatusBar style="auto" />
     </View>
   );
