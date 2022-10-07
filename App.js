@@ -5,10 +5,7 @@ export default function App() {
   return (
     <View style={styles.container}>
 
-      <Text>Open up App.js to start working on your app!</Text>
-      <Text>Adding in develop branch</Text>
-      <Text>Adding second change in develop branch</Text>
-      <Text>Third change in develop </Text>
+     <Text>This is develop branch</Text>
 
       <StatusBar style="auto" />
     </View>
