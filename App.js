@@ -7,6 +7,7 @@ export default function App() {
       <Text>Open up App.js to start working on your app!</Text>
       <Text>Adding in develop branch</Text>
       <Text>Adding second change in develop branch</Text>
+      <Text>Third change in develop </Text>
       <StatusBar style="auto" />
     </View>
   );
