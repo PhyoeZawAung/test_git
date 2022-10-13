@@ -10,7 +10,8 @@ const CustomContent = (props) => {
       <View>
         <DrawerItem label="Home" onPress={() => props.navigation.navigate("Home")}></DrawerItem>
         <DrawerItem label="Favourite" onPress={() => props.navigation.navigate("Favourite")}></DrawerItem>
-        <DrawerItem label="Login" onPress={()=>props.navigation.navigate("Login")}></DrawerItem>
+        <DrawerItem label="Login" onPress={() => props.navigation.navigate("Login")}></DrawerItem>
+        <DrawerItem label="User List" onPress={()=>props.navigation.navigate("UsetList")}></DrawerItem>
       </View>
      
 

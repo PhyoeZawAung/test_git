@@ -24,6 +24,8 @@ const Login = () => {
     </View>
   )
 }
+
+
 const DrawerScreen = () => {
   return (
     <Drawer.Navigator initialRouteName="Home" drawerContent={(props) =><CustomContent{...props}/>}>

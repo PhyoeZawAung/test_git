@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { View, Text } from "react-native";
 import DrawerScreen from "./drawer";
 import LoginScreen from "./Login";
+import UserListScreen from "./UserList";
 const Detail = ({ route }) => {
   const { name, position } = route.params;
   return (
@@ -40,6 +41,12 @@ const Login = () => {
     <LoginScreen/>
   )
 }
+
+const UserList = () => {
+  return (
+   <UserListScreen/>
+  )
+}
 const Stack = createNativeStackNavigator();
 const StackScreen = () => {
   return (
@@ -51,7 +58,8 @@ const StackScreen = () => {
           component={DrawerScreen}
         />
         <Stack.Screen name="Detail" component={Detail} />
-        <Stack.Screen name="Login" component={Login}/>
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="UsetList" component={UserList}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
