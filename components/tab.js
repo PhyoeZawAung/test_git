@@ -2,7 +2,8 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { View, Text, Button, FlatList } from "react-native";
 import ContentView from "./Content";
-
+import store from "../src/redux/store";
+import { Provider } from "react-redux";
 const Tab = createBottomTabNavigator();
 
 const renderItem = ({ item }) => {
@@ -17,12 +18,18 @@ const renderItem = ({ item }) => {
 
 const All = ({ navigation }) => {
   const person = [
-    { name: "John", position: "Leader", navigation: { ...navigation } },
-    { name: "Marry", position: "Manager", navigation: { ...navigation } },
-    { name: "Eric", position: "Manager", navigation: { ...navigation } },
-    { name: "Hanna", position: "Sub Leader", navigation: { ...navigation } },
+    { name: "John", position: "Leader", navigation: { ...navigation },fav:false },
+    { name: "Marry", position: "Manager", navigation: { ...navigation } ,fav:false },
+    { name: "Eric", position: "Manager", navigation: { ...navigation } ,fav:false },
+    { name: "Hanna", position: "Sub Leader", navigation: { ...navigation } ,fav:false },
   ];
-  return <FlatList data={person} renderItem={renderItem} />;
+  return (
+   
+      <Provider store={store}>
+         <FlatList data={person} renderItem={renderItem} />
+      </Provider>
+      
+      );
 };
 const Manager = ({ navigation }) => {
   return (

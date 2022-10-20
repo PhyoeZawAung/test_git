@@ -1,19 +1,55 @@
 import React from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text, Button ,FlatList} from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import ContentView from "./Content";
 const Drawer = createDrawerNavigator();
 import TabScreen from "./tab";
 import CustomContent from "./DrawerCustomContent";
+
+import store from "../src/redux/store";
+import { Provider, useDispatch, useSelector } from "react-redux";
+import { GetFavouriteAction } from "../src/redux/actions/GetFavourite";
+
+
+const FavScreen = (props) => {
+  const dispatch = useDispatch();
+  const data = useSelector((store) => store.favItem)
+ 
+  const renderItem = ({ item }) => {
+    return (
+      <ContentView name={item.name}
+        position={item.position}
+        navigation={item.navigation}
+        fav={item.fav} />
+    )
+    
+  }
+  return (
+    
+    <View>
+      <FlatList data={data} renderItem={renderItem}/>
+      
+      <Text>{JSON.stringify(data)}</Text>
+    </View>
+  )
+}
 const Home = ({ navigation }) => {
   return <TabScreen />;
 };
 
 const Favourite = ({ navigation }) => {
   return (
+
+    <Provider store={store}>
+      <FavScreen navigation={navigation} />
+
+    
     <View>
-      <ContentView name="Mary" position="leader" navigation={navigation} />
+     
     </View>
+
+    </Provider>
+    
   );
 };
 
