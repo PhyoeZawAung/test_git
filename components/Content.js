@@ -37,10 +37,7 @@ const ContentView = (props) => {
     <View style={{ paddingHorizontal: 20 }}>
       <Pressable
         onPress={() => {
-          props.navigation.navigate("Detail", {
-            name: props.name,
-            position: props.position,
-          });
+         
         }}
         style={styles.contentContainer}
       >
