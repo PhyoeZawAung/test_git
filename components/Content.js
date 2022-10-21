@@ -2,19 +2,38 @@ import React from "react";
 
 import { View, Text, StyleSheet, Image, Pressable } from "react-native";
 import { Icon } from "@rneui/themed";
-import { GetFavouriteAction } from "../src/redux/actions/GetFavourite";
-import { useSelector,useDispatch } from "react-redux";
-
+import {
+  GetFavouriteAction,
+  RemoveFromFavourite,
+} from "../src/redux/actions/GetFavourite";
+import { useSelector, useDispatch } from "react-redux";
 
 const ContentView = (props) => {
   const dispatch = useDispatch();
-  
+
   let fav = props.fav;
   const addItem = () => {
-    dispatch(GetFavouriteAction({ name:props.name, position:props.position, navigation:props.navigation,fav:fav }));
-  }
+    dispatch(
+      GetFavouriteAction({
+        id: props.id,
+        name: props.name,
+        position: props.position,
+        fav: props.fav,
+      })
+    );
+  };
+
+  const removeItem = () => {
+    dispatch(
+      RemoveFromFavourite({
+        id: props.id,
+        name: props.name,
+        position: props.position,
+        fav: props.fav,
+      })
+    );
+  };
   return (
-    
     <View style={{ paddingHorizontal: 20 }}>
       <Pressable
         onPress={() => {
@@ -34,27 +53,29 @@ const ContentView = (props) => {
           <Text style={styles.position}>{props.position}</Text>
         </View>
         <View style={styles.iconContainer}>
-          <Pressable onPress={() => {
-            
-            if (!fav) {
-              fav = true;
-              addItem();
-              alert("add to favourite");
-              
-            } else {
-              alert("already added");
-            }
-            
-          }}>
-            <Icon name="star" size={30} style={styles.icon} />
+          <Pressable
+            onPress={() => {
+              if (!fav) {
+                addItem();
+                alert("add to favourite");
+              } else {
+                removeItem();
+                alert("remove from favourite");
+              }
+            }}
+          >
+            {fav ? (
+              <Icon name="star" size={30} style={styles.icon} color="#f0f" />
+            ) : (
+              <Icon name="star" size={30} style={styles.icon} color="#000" />
+            )}
           </Pressable>
           <Pressable>
             <Icon name="phone" size={30} style={styles.icon} />
           </Pressable>
         </View>
       </Pressable>
-      </View>
-      
+    </View>
   );
 };
 const styles = StyleSheet.create({
@@ -85,6 +106,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     marginLeft: 15,
+    color: "#f00",
   },
 });
 export default ContentView;
